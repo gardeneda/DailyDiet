@@ -15,7 +15,7 @@ public class Exercise {
     private String name;
 
 
-    public Exercise(String exerciseName, int hours, int mintues) {
+    public Exercise(String exerciseName, int hours, int minutes) {
         this.name = exerciseName;
         this.hours = hours;
         this.minutes = minutes;

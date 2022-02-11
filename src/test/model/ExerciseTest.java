@@ -46,8 +46,7 @@ public class ExerciseTest {
     @Test
     public void testTotalCaloriesBurnt() {
         assertEquals(running.getCaloriesBurnPerHour(), running.totalCaloriesBurnt());
-        assertEquals(swimming.getCaloriesBurnPerMinute() * 132,
-                swimming.totalCaloriesBurnt());
+        assertEquals(swimming.getCaloriesBurnPerMinute() * 132, swimming.totalCaloriesBurnt());
         assertEquals(bicycling.getCaloriesBurnPerHour(), bicycling.totalCaloriesBurnt());
         assertEquals(weightlifting.getCaloriesBurnPerMinute(), weightlifting.totalCaloriesBurnt());
         assertEquals(0, calisthenics.totalCaloriesBurnt());
