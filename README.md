@@ -9,6 +9,8 @@
 The app will:
 - calculate the user's BMI
 - calculate the user's average metabolic rate
+- keep track of what food the user ate throughout the day
+- keep track of what exercise and how long the user has performed it throughout the day
 - make calculations of how much *net gain* or *net loss* of calories the user will achieve.
 
 Decided to create this app as it seems like something that many people could benefit from,
