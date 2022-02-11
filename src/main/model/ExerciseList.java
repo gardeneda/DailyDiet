@@ -10,20 +10,32 @@ public class ExerciseList {
         workout = new ArrayList<>();
     }
 
+    // EFFECTS: returns true if workout list is empty, otherwise false
+    public boolean isEmpty() {
+        return workout.size() == 0;
+    }
+
     // MODIFIES: this
-    // EFFECTS: adds the specified exercise to the list
+    // EFFECTS: adds the specified exercise to the workout list.
     public void addExercise(Exercise exercise) {
         workout.add(exercise);
     }
 
+    // REQUIRES: the workout list is NOT empty.
+    // MODIFIES: this
+    // EFFECTS: removes the most recently added exercise from the workout list.
+    public void removeLastExercise() {
+        int lastIndex = workout.size() - 1;
+        workout.remove(lastIndex);
+    }
 
+    // EFFECTS: takes the calories burnt from each exercise in the workout list
+    //          and returns the total amount of calories that the user has burnt in the day.
     public double totalCaloriesBurnt() {
         double sumOfTotalCaloriesBurnt = 0;
         for (Exercise i : workout) {
             sumOfTotalCaloriesBurnt += i.totalCaloriesBurnt();
         }
-        return 0.0;
+        return sumOfTotalCaloriesBurnt;
     }
-
-
 }
