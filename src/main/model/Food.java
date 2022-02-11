@@ -1,5 +1,6 @@
 package model;
 
+// Represents the food that the user eats, which they will specify the calories and name of food eaten.
 public class Food {
     private double calories;
     private String name;

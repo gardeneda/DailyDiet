@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents a list of exercise that the user has performed throughout the day
 public class ExerciseList {
     private List<Exercise> workout;
 

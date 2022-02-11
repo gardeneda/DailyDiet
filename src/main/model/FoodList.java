@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents the food that the user has eaten throughout the day
 public class FoodList {
     private List<Food> diet;
 

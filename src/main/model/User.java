@@ -76,6 +76,8 @@ public class User {
     // MODIFIES: this
     // EFFECTS: calculates the body mass index of the User based on their
     //          current height and weight.
+    //          The parameter is used with given weight instead of the user's (this.weight),
+    //          as the user may want to calculate their weight goal.
     public double calculateBMI(double weight) {
         this.bodyMassIndex = (weight / (this.heightInMeters * this.heightInMeters));
         return this.bodyMassIndex;
