@@ -27,8 +27,8 @@ public class DailyDiet {
         askUserWeightGoal(user);
         double sumCalories = calorieStatus();
         losingOrGainingWeight(user, sumCalories);
-        System.out.println("Strategize better if you did not meet your goal today."
-                            + "However, if you did meet your goals today - keep up the good work!");
+        System.out.println("\nStrategize better if you did not meet your goal today."
+                            + " However, if you did meet your goals today - keep up the good work!");
     }
 
     private void initUtils() {
@@ -74,11 +74,13 @@ public class DailyDiet {
     }
 
     private void foodThroughoutTheDay() {
-        System.out.println();
-        System.out.println();
+        System.out.println("\n\n");
         while (true) {
-            System.out.println("If you need to add a food entry, type 'Y'. "
-                    + "If you need to remove the last food entered, press 'R'."
+            System.out.println("Today you ate these: ");
+            diet.iterateItemsInList();
+
+            System.out.println("If you need to add a food entry, type 'Y'. \n"
+                    + "If you need to remove the last food entered, press 'R'.\n"
                     + "If you have no more entries, type 'N')");
             String userFoodResponse = sc.next();
 
@@ -89,35 +91,36 @@ public class DailyDiet {
                 continue;
             }
 
-            System.out.println("What foods have you eaten today (or as of now?): ");
-            System.out.println("Name of Food: ");
+            System.out.println("What foods have you eaten today (or as of now?)\nName of Food: ");
             String foodName = sc.next();
+
             System.out.println("Calorie of Food: ");
             double foodCalorie = sc.nextDouble();
 
             Food food = new Food(foodCalorie, foodName);
             diet.addFood(food);
             System.out.println("\n");
-            System.out.println("Today you ate these: " + diet);
         }
     }
 
     private void exerciseThroughoutTheDay() {
         while (true) {
-            System.out.println("If you need to add an exercise entry, type 'Y'.\n "
-                    + "If you need to remove the last exercise entered, press 'R'.\n"
-                    + "If you have no more entries, type 'N')");
+            System.out.println("Currently you did these exercises: ");
+            workout.iterateItemsInList();
+
+            System.out.println("If you need to add an exercise entry, type 'Y'.\nIf you need to remove the last "
+                    + "exercise entered, press 'R'.\nIf you have no more entries, type 'N'");
             String userExerciseResponse = sc.next();
 
             if (Objects.equals(userExerciseResponse, "N")) {
                 break;
             } else if (Objects.equals(userExerciseResponse, "R") && !(diet.isEmpty())) {
-                diet.removeLastFood();
+                workout.removeLastExercise();
                 continue;
             }
             System.out.println("What exercises did you do today? Choose an exercise from the list below");
-            System.out.println("running\n swimming\n bicycling\n weightlifting\n calisthenics\n hiking");
-            System.out.println("Which did you do out of the above? Type the exercise exactly as given above: ");
+            System.out.println("Running\nSwimming\nBicycling\nWeightlifting\nCalisthenics\nHiking");
+            System.out.println("Which did you do out of the above? ");
 
             String exerciseName = sc.next().toLowerCase(Locale.ROOT);
             System.out.println("Hours: ");
@@ -127,12 +130,11 @@ public class DailyDiet {
 
             Exercise exercise = new Exercise(exerciseName, exerciseHours, exerciseMinutes);
             workout.addExercise(exercise);
-            System.out.println("Currently you did these exercises: " + workout);
         }
     }
 
     private void askUserWeightGoal(User user) {
-        System.out.println("What is your weight goal?: ");
+        System.out.println("What is your weight goal?" + " Your current weight is " + user.getWeight() + " kg.");
         double weightGoal = sc.nextDouble();
         user.updateWeightGoal(weightGoal);
     }
@@ -146,14 +148,14 @@ public class DailyDiet {
     }
 
     private void losingOrGainingWeight(User user, double sumCalories) {
-        System.out.println("Your total net calorie right now is: " + sumCalories + "Calories.");
+        System.out.println("\nYour total net calorie right now is: " + sumCalories + "Calories.");
         if (user.getWeightGoal() > user.getWeight()) {
             if (sumCalories > 0) {
                 System.out.println("You're successfully gaining weight to achieve your weight goal of "
                         + user.getWeightGoal() + "kg!");
             } else {
                 System.out.println("You're losing weight right now, "
-                        + "as you are eating less calories or are exercising too much.");
+                        + "as you are using more calories than your body can store it.");
             }
         } else {
             if (sumCalories > 0) {

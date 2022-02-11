@@ -30,6 +30,12 @@ public class FoodList {
         diet.remove(lastIndex);
     }
 
+    public void iterateItemsInList() {
+        for (Food food : diet) {
+            System.out.println(food.getName());
+        }
+    }
+
     // EFFECTS: takes the calorie intake of all the food in the diet list
     //          and returns the total amount of calorie intake of the user for the day.
     public double totalCaloriesConsumed() {

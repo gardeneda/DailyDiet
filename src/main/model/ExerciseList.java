@@ -30,6 +30,12 @@ public class ExerciseList {
         workout.remove(lastIndex);
     }
 
+    public void iterateItemsInList() {
+        for (Exercise exercise : workout) {
+            System.out.println(exercise.getExerciseName());
+        }
+    }
+
     // EFFECTS: takes the calories burnt from each exercise in the workout list
     //          and returns the total amount of calories that the user has burnt in the day.
     public double totalCaloriesBurnt() {
