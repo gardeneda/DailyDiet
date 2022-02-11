@@ -14,12 +14,12 @@ public class ExerciseTest {
 
     @BeforeEach
     public void setup() {
-        running = new Exercise("running");
-        swimming = new Exercise("swimming");
-        bicycling = new Exercise("bicycling");
-        weightlifting = new Exercise("weightlifting");
-        calisthenics = new Exercise("calisthenics");
-        hiking = new Exercise("hiking");
+        running = new Exercise("running", 1, 0);
+        swimming = new Exercise("swimming", 2, 12);
+        bicycling = new Exercise("bicycling", 0, 60);
+        weightlifting = new Exercise("weightlifting", 0, 1);
+        calisthenics = new Exercise("calisthenics", 0, 0);
+        hiking = new Exercise("hiking", 0, 59);
     }
 
     @Test
@@ -45,11 +45,11 @@ public class ExerciseTest {
 
     @Test
     public void testTotalCaloriesBurnt() {
-        assertEquals(running.getCaloriesBurnPerHour(), running.totalCaloriesBurnt(1, 0));
-        assertEquals(running.getCaloriesBurnPerMinute() * 132,
-                running.totalCaloriesBurnt(2, 12));
-        assertEquals(running.getCaloriesBurnPerHour(), running.totalCaloriesBurnt(0, 60));
-        assertEquals(running.getCaloriesBurnPerMinute(), running.totalCaloriesBurnt(0, 1));
-        assertEquals(0, running.totalCaloriesBurnt(0, 0));
+        assertEquals(running.getCaloriesBurnPerHour(), running.totalCaloriesBurnt());
+        assertEquals(swimming.getCaloriesBurnPerMinute() * 132,
+                swimming.totalCaloriesBurnt());
+        assertEquals(bicycling.getCaloriesBurnPerHour(), bicycling.totalCaloriesBurnt());
+        assertEquals(weightlifting.getCaloriesBurnPerMinute(), weightlifting.totalCaloriesBurnt());
+        assertEquals(0, calisthenics.totalCaloriesBurnt());
     }
 }

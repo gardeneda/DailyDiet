@@ -8,13 +8,17 @@ import java.util.Objects;
 // inclusion of more exercises.
 
 public class Exercise {
+    private int hours;
+    private int minutes;
     private double caloriesBurnPerMinute;
     private double caloriesBurnPerHour;
     private String name;
 
 
-    public Exercise(String exerciseName) {
+    public Exercise(String exerciseName, int hours, int mintues) {
         this.name = exerciseName;
+        this.hours = hours;
+        this.minutes = minutes;
         if (Objects.equals(exerciseName, "running")) {
             this.caloriesBurnPerHour = 606.0;
             this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
@@ -50,8 +54,8 @@ public class Exercise {
     }
 
     // EFFECTS: returns the total amount of calories burnt by performing the exercise.
-    public double totalCaloriesBurnt(int hours, int minutes) {
-        int totalTimeInMinutes = (hours * 60) + minutes;
+    public double totalCaloriesBurnt() {
+        int totalTimeInMinutes = (this.hours * 60) + this.minutes;
         return this.caloriesBurnPerMinute * totalTimeInMinutes;
     }
 }
