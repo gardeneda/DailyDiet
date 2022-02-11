@@ -81,7 +81,7 @@ public class User {
         return this.bodyMassIndex;
     }
 
-
+    // REQUIRES: given gender needs to be "F" or "M"
     // MODIFIES: this
     // EFFECTS: calculates the metabolism of the user based on their
     //          current age and gender.
@@ -89,10 +89,11 @@ public class User {
         double metabolism;
         if (Objects.equals(this.gender, "F")) {
             metabolism = 447.593 + (9.247 * this.weight) + (3.089 * this.heightInCm) - (4.330 * this.age);
-        } else  {
+            this.dailyMetabolism = (int)metabolism;
+        } else  if (Objects.equals(this.gender, "M")) {
             metabolism = 88.362 + (13.397 * this.weight) + (4.799 * this.heightInCm) - (5.677 * this.age);
+            this.dailyMetabolism = (int)metabolism;
         }
-        this.dailyMetabolism = (int)metabolism;
         return this.dailyMetabolism;
     }
 
