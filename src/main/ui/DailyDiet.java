@@ -25,7 +25,7 @@ public class DailyDiet {
         foodThroughoutTheDay();
         exerciseThroughoutTheDay();
         askUserWeightGoal(user);
-        double sumCalories = calorieStatus();
+        double sumCalories = calorieStatus(user);
         losingOrGainingWeight(user, sumCalories);
         System.out.println("\nStrategize better if you did not meet your goal today."
                             + " However, if you did meet your goals today - keep up the good work!");
@@ -139,12 +139,12 @@ public class DailyDiet {
         user.updateWeightGoal(weightGoal);
     }
 
-    private double calorieStatus() {
+    private double calorieStatus(User user) {
         double caloriesConsumed = diet.totalCaloriesConsumed();
         double caloriesBurnt = workout.totalCaloriesBurnt();
         System.out.println("Total calories consumed: " + caloriesConsumed);
         System.out.println("Total calories burnt: " + caloriesBurnt);
-        return diet.totalCaloriesConsumed() - workout.totalCaloriesBurnt();
+        return diet.totalCaloriesConsumed() - workout.totalCaloriesBurnt() - user.getDailyMetabolism();
     }
 
     private void losingOrGainingWeight(User user, double sumCalories) {
