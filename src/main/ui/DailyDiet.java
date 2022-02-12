@@ -14,10 +14,14 @@ public class DailyDiet {
     private ExerciseList workout;
     private Scanner sc;
 
+    // EFFECTS: runs the DailyDiet application
     public DailyDiet() {
         runDailyDiet();
     }
 
+    // MODIFIES: this
+    // EFFECTS: takes in user input and converts them to usable data for
+    //          the DailyDiet application to run.
     private void runDailyDiet() {
         initUtils();
         User user = attainUserInfo();
@@ -31,12 +35,17 @@ public class DailyDiet {
                             + " However, if you did meet your goals today - keep up the good work!");
     }
 
+    // EFFECTS: initiates the different food list, exercise list and the scanner to allow users to
+    //          interact with the terminal.
     private void initUtils() {
         diet = new FoodList();
         workout = new ExerciseList();
         sc = new Scanner(System.in);
     }
 
+    // REQUIRES: user may not choose any gender other than "M" or "F"
+    // MODIFIES: this
+    // EFFECTS: initializes the User with the user input given to cater to well-reflect the user.
     private User attainUserInfo() {
         System.out.println("What is your name?: ");
         String name = sc.nextLine();
@@ -59,6 +68,9 @@ public class DailyDiet {
         return new User(name, age, gender, weight, height, birthDate);
     }
 
+
+    // EFFECTS: tells the user of their BMI and their basic metabolism to give them an idea
+    //          about their current state of their body and how much calories they are burning passively.
     private void userBodyMassIndexMetabolismStatement(User user) {
         double userMetabolism = user.calculateMetabolism();
         double userBMI = user.calculateBMI(user.getWeight());
@@ -73,6 +85,10 @@ public class DailyDiet {
         System.out.println("BMI above or equal to 25 means you're overweight.");
     }
 
+    // MODIFIES: this
+    // EFFECTS: registers the food that the user has eaten throughout their day
+    //          and places them inside an ArrayList. The user will provide the
+    //          parameters of the name of food they have eaten and its calories.
     private void foodThroughoutTheDay() {
         System.out.println("\n\n");
         while (true) {
@@ -103,6 +119,11 @@ public class DailyDiet {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: registers the exercise that done throughout their day and places them
+    //          inside an ArrayList. There is a selection of which exercises the user has done
+    //          and the user must choose one of the selections and provide how long they
+    //          exercised for in hours and minutes.
     private void exerciseThroughoutTheDay() {
         while (true) {
             System.out.println("Currently you did these exercises: ");
@@ -133,12 +154,16 @@ public class DailyDiet {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets weight goal that the user wants to reach from their current weight.
     private void askUserWeightGoal(User user) {
         System.out.println("What is your weight goal?" + " Your current weight is " + user.getWeight() + " kg.");
         double weightGoal = sc.nextDouble();
         user.updateWeightGoal(weightGoal);
     }
 
+    // EFFECTS: returns the total sum of Calories that the user has left after eating and exercising
+    //         throughout their day.
     private double calorieStatus(User user) {
         double caloriesConsumed = diet.totalCaloriesConsumed();
         double caloriesBurnt = workout.totalCaloriesBurnt();
@@ -147,6 +172,8 @@ public class DailyDiet {
         return diet.totalCaloriesConsumed() - workout.totalCaloriesBurnt() - user.getDailyMetabolism();
     }
 
+    // EFFECTS: tells the user their net calories and tell them whether they are losing or gaining weight
+    //          and whether they are making progress in regards to their weight goal.
     private void losingOrGainingWeight(User user, double sumCalories) {
         System.out.println("\nYour total net calorie right now is: " + sumCalories + "Calories.");
         if (user.getWeightGoal() > user.getWeight()) {
