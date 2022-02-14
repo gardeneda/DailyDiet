@@ -103,12 +103,12 @@ public class User {
     // MODIFIES: this
     // EFFECTS: automatically calculates the user's age based on the birthdate given.
     //          this would allow the user's age to be up-to-date even if time passes.
-//    public int updateAge() {
-//        LocalDate dateToday = LocalDate.now();
-//
-//        return 1; // stub
-//    }
-////    Will be implementing this later after studying a bit more.
+    //  public int updateAge() {
+    //    LocalDate dateToday = LocalDate.now();
+    //
+    //    return 1; // stub
+    //}
+    // Will be implementing this later after studying a bit more.
 
 
     // REQUIRES: given weight > 0

@@ -30,6 +30,7 @@ public class ExerciseList {
         workout.remove(lastIndex);
     }
 
+    //TODO: Must remove this
     public void iterateItemsInList() {
         for (Exercise exercise : workout) {
             System.out.println(exercise.getExerciseName());

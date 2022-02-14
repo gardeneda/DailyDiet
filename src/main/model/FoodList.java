@@ -30,6 +30,7 @@ public class FoodList {
         diet.remove(lastIndex);
     }
 
+    //TODO: Must remove this
     public void iterateItemsInList() {
         for (Food food : diet) {
             System.out.println(food.getName());
