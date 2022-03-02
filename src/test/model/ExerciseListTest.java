@@ -2,6 +2,9 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ExerciseListTest {
@@ -16,7 +19,7 @@ public class ExerciseListTest {
 
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         running = new Exercise("running", 2, 0);
         swimming = new Exercise("swimming", 0, 50);
         weightlifting = new Exercise("weightlifting", 0, 0);
@@ -35,7 +38,13 @@ public class ExerciseListTest {
     }
 
     @Test
-    public void testRemoveExercise() {
+    void testGetList() {
+        List<Exercise> testList = fourWorkOut.getList();
+        assertEquals(fourWorkOut.getIndex(0), testList.get(0));
+    }
+
+    @Test
+     void testRemoveExercise() {
         oneWorkOut.removeLastExercise();
         assertTrue(oneWorkOut.isEmpty());
 
@@ -47,7 +56,7 @@ public class ExerciseListTest {
     }
 
     @Test
-    public void testSumOfTotalCaloriesBurnt() {
+    void testSumOfTotalCaloriesBurnt() {
         assertEquals(0, emptyList.totalCaloriesBurnt());
         assertEquals(1212.0, oneWorkOut.totalCaloriesBurnt());
         assertEquals(2281.8, fourWorkOut.totalCaloriesBurnt());

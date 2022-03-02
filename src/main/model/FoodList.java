@@ -11,6 +11,16 @@ public class FoodList {
         diet = new ArrayList<>();
     }
 
+    // GETTER METHODS
+    //TODO: Must make sure this works
+    public List<Food> getList() {
+        return diet;
+    }
+
+    public Food getIndex(int i) {
+        return diet.get(i);
+    }
+
     // EFFECTS: returns true if diet list is empty, otherwise false
     public boolean isEmpty() {
         return diet.size() == 0;
@@ -30,12 +40,7 @@ public class FoodList {
         diet.remove(lastIndex);
     }
 
-    //TODO: Must remove this
-    public void iterateItemsInList() {
-        for (Food food : diet) {
-            System.out.println(food.getName());
-        }
-    }
+
 
     // EFFECTS: takes the calorie intake of all the food in the diet list
     //          and returns the total amount of calorie intake of the user for the day.

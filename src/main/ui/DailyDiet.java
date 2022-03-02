@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
@@ -23,11 +24,16 @@ public class DailyDiet {
     // EFFECTS: takes in user input and converts them to usable data for
     //          the DailyDiet application to run.
     private void runDailyDiet() {
+        // TODO: Need to completely re-haul the system here.
         initUtils();
         User user = attainUserInfo();
         userBodyMassIndexMetabolismStatement(user);
-        foodThroughoutTheDay();
-        exerciseThroughoutTheDay();
+
+        reportFood();
+        insertFood();
+        reportExercise();
+        insertExercise();
+
         askUserWeightGoal(user);
         double sumCalories = calorieStatus(user);
         losingOrGainingWeight(user, sumCalories);
@@ -85,16 +91,20 @@ public class DailyDiet {
         System.out.println("BMI above or equal to 25 means you're overweight.");
     }
 
+    // EFFECTS: prints out the list of food that the user has eaten throughout the day
+    private void reportFood() {
+        System.out.println("\n\nToday you ate these: ");
+        for (Food f: diet.getList()) {
+            System.out.println(f.getName());
+        }
+    }
+
     // MODIFIES: this
     // EFFECTS: registers the food that the user has eaten throughout their day
     //          and places them inside an ArrayList. The user will provide the
     //          parameters of the name of food they have eaten and its calories.
-    private void foodThroughoutTheDay() {
-        System.out.println("\n\n");
+    private void insertFood() {
         while (true) {
-            System.out.println("Today you ate these: ");
-            diet.iterateItemsInList();
-
             System.out.println("If you need to add a food entry, type 'Y'. \n"
                     + "If you need to remove the last food entered, press 'R'.\n"
                     + "If you have no more entries, type 'N')");
@@ -119,19 +129,24 @@ public class DailyDiet {
         }
     }
 
+    // EFFECTS: prints out the exercises that the user has done throughout the day
+    private void reportExercise() {
+        System.out.println("Currently you did these exercises: ");
+        for (Exercise e: workout.getList()) {
+            System.out.println(e.getExerciseName());
+        }
+    }
+
     // MODIFIES: this
     // EFFECTS: registers the exercise that done throughout their day and places them
     //          inside an ArrayList. There is a selection of which exercises the user has done
     //          and the user must choose one of the selections and provide how long they
     //          exercised for in hours and minutes.
-    private void exerciseThroughoutTheDay() {
+    private void insertExercise() {
         while (true) {
-            System.out.println("Currently you did these exercises: ");
-            workout.iterateItemsInList();
-
             System.out.println("If you need to add an exercise entry, type 'Y'.\nIf you need to remove the last "
                     + "exercise entered, press 'R'.\nIf you have no more entries, type 'N'");
-            String userExerciseResponse = sc.next();
+            String userExerciseResponse = sc.next().toUpperCase();
 
             if (Objects.equals(userExerciseResponse, "N")) {
                 break;
@@ -143,7 +158,7 @@ public class DailyDiet {
             System.out.println("Running\nSwimming\nBicycling\nWeightlifting\nCalisthenics\nHiking");
             System.out.println("Which did you do out of the above? ");
 
-            String exerciseName = sc.next().toLowerCase(Locale.ROOT);
+            String exerciseName = sc.next().toLowerCase();
             System.out.println("Hours: ");
             int exerciseHours = sc.nextInt();
             System.out.println("Minutes: ");

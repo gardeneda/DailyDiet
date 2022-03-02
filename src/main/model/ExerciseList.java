@@ -11,6 +11,16 @@ public class ExerciseList {
         workout = new ArrayList<>();
     }
 
+    // GETTER METHODS
+    //TODO: Must make sure this works
+    public List<Exercise> getList() {
+        return workout;
+    }
+
+    public Exercise getIndex(int i) {
+        return workout.get(i);
+    }
+
     // EFFECTS: returns true if workout list is empty, otherwise false
     public boolean isEmpty() {
         return workout.size() == 0;
@@ -30,12 +40,6 @@ public class ExerciseList {
         workout.remove(lastIndex);
     }
 
-    //TODO: Must remove this
-    public void iterateItemsInList() {
-        for (Exercise exercise : workout) {
-            System.out.println(exercise.getExerciseName());
-        }
-    }
 
     // EFFECTS: takes the calories burnt from each exercise in the workout list
     //          and returns the total amount of calories that the user has burnt in the day.
