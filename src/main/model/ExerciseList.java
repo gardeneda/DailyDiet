@@ -12,7 +12,6 @@ public class ExerciseList {
     }
 
     // GETTER METHODS
-    //TODO: Must make sure this works
     public List<Exercise> getList() {
         return workout;
     }

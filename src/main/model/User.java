@@ -114,6 +114,7 @@ public class User {
     // REQUIRES: given weight > 0
     // MODIFIES: this
     // EFFECTS: updates the weight goal of the user by their target weight goal.
+    // TODO: print statements should go in a method in the ui.
     public void updateWeightGoal(double weight) {
         if (calculateBMI(weight) <= 18.5) {
             System.out.println("You're aiming to be underweight.");

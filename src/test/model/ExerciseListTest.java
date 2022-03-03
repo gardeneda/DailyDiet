@@ -2,9 +2,6 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ExerciseListTest {
@@ -35,12 +32,6 @@ public class ExerciseListTest {
         fourWorkOut.addExercise(swimming);
         fourWorkOut.addExercise(weightlifting);
         fourWorkOut.addExercise(calisthenics);
-    }
-
-    @Test
-    void testGetList() {
-        List<Exercise> testList = fourWorkOut.getList();
-        assertEquals(fourWorkOut.getIndex(0), testList.get(0));
     }
 
     @Test

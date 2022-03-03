@@ -1,9 +1,8 @@
 package ui;
 
+import exceptions.InvalidInputException;
 import model.*;
 
-import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -24,7 +23,7 @@ public class DailyDiet {
     // EFFECTS: takes in user input and converts them to usable data for
     //          the DailyDiet application to run.
     private void runDailyDiet() {
-        // TODO: Need to completely re-haul the system here.
+        // TODO: Need to completely re-haul this method here.
         initUtils();
         User user = attainUserInfo();
         userBodyMassIndexMetabolismStatement(user);
@@ -52,7 +51,7 @@ public class DailyDiet {
     // REQUIRES: user may not choose any gender other than "M" or "F"
     // MODIFIES: this
     // EFFECTS: initializes the User with the user input given to cater to well-reflect the user.
-    private User attainUserInfo() {
+    private User attainUserInfo() { //throws InvalidInputException {
         System.out.println("What is your name?: ");
         String name = sc.nextLine();
 
@@ -60,7 +59,10 @@ public class DailyDiet {
         int age = sc.nextInt();
 
         System.out.println("What is your biological gender? Answer with 'F' for female, 'M' for male: ");
-        String gender = sc.next();
+        String gender = sc.next().toUpperCase();
+        // if (!gender.equals("M") && !gender.equals("F")) {
+        //    throw new InvalidInputException();
+        //}
 
         System.out.println("How much do you weigh in kg?: ");
         double weight = sc.nextDouble();
@@ -92,6 +94,7 @@ public class DailyDiet {
     }
 
     // EFFECTS: prints out the list of food that the user has eaten throughout the day
+    // TODO: also display the calories of each food beside the listed food
     private void reportFood() {
         System.out.println("\n\nToday you ate these: ");
         for (Food f: diet.getList()) {
@@ -130,6 +133,7 @@ public class DailyDiet {
     }
 
     // EFFECTS: prints out the exercises that the user has done throughout the day
+    // TODO: also display the number of calories burnt for each exercise
     private void reportExercise() {
         System.out.println("Currently you did these exercises: ");
         for (Exercise e: workout.getList()) {
@@ -189,6 +193,7 @@ public class DailyDiet {
 
     // EFFECTS: tells the user their net calories and tell them whether they are losing or gaining weight
     //          and whether they are making progress in regards to their weight goal.
+    // TODO: Change this to a boolean for future use? The program should do something with this knowledge
     private void losingOrGainingWeight(User user, double sumCalories) {
         System.out.println("\nYour total net calorie right now is: " + sumCalories + "Calories.");
         if (user.getWeightGoal() > user.getWeight()) {

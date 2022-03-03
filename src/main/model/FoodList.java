@@ -12,7 +12,6 @@ public class FoodList {
     }
 
     // GETTER METHODS
-    //TODO: Must make sure this works
     public List<Food> getList() {
         return diet;
     }
