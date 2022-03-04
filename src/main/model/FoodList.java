@@ -20,6 +20,7 @@ public class FoodList {
         return diet.get(i);
     }
 
+    // ================================================================
     // EFFECTS: returns true if diet list is empty, otherwise false
     public boolean isEmpty() {
         return diet.size() == 0;
@@ -38,8 +39,6 @@ public class FoodList {
         int lastIndex = diet.size() - 1;
         diet.remove(lastIndex);
     }
-
-
 
     // EFFECTS: takes the calorie intake of all the food in the diet list
     //          and returns the total amount of calorie intake of the user for the day.

@@ -10,6 +10,7 @@ public class Food {
         this.calories = calories;
     }
 
+    // Getters
     public double getCalories() {
         return this.calories;
     }

@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Objects;
-import java.time.LocalDate;
 
 // Represents a user of the application.
 // Contains their basic info required to calculate metabolism and body mass index.
@@ -16,18 +15,16 @@ public class User {
     private double bodyMassIndex;
     private int dailyMetabolism;
     private double weightGoal;
-    private int birthDate;
+    private boolean isAchievingWeightGoal;
 
-    public User(String name, int age, String gender, double weight, double height, int birthDate) {
+    public User(String name, int age, String gender, double weight, double height) {
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.weight = weight;
         this.heightInCm = height;
         this.heightInMeters = (height / 100);
-        this.weightGoal = 0.0;
-        this.birthDate = birthDate;
-        this.bodyMassIndex = 0.0;
+        this.isAchievingWeightGoal = false;
     }
 
 
@@ -56,10 +53,6 @@ public class User {
         return this.heightInMeters;
     }
 
-    public int getBirthDate() {
-        return this.birthDate;
-    }
-
     public double getBodyMassIndex() {
         return this.bodyMassIndex;
     }
@@ -72,6 +65,9 @@ public class User {
         return this.weightGoal;
     }
 
+    public boolean isAchievingWeightGoal() {
+        return this.isAchievingWeightGoal;
+    }
 
     // MODIFIES: this
     // EFFECTS: calculates the body mass index of the User based on their
@@ -99,35 +95,15 @@ public class User {
         return this.dailyMetabolism;
     }
 
-
-    // MODIFIES: this
-    // EFFECTS: automatically calculates the user's age based on the birthdate given.
-    //          this would allow the user's age to be up-to-date even if time passes.
-    //  public int updateAge() {
-    //    LocalDate dateToday = LocalDate.now();
-    //
-    //    return 1; // stub
-    //}
-    // Will be implementing this later after studying a bit more.
-
-
     // REQUIRES: given weight > 0
     // MODIFIES: this
     // EFFECTS: updates the weight goal of the user by their target weight goal.
-    // TODO: print statements should go in a method in the ui.
     public void updateWeightGoal(double weight) {
-        if (calculateBMI(weight) <= 18.5) {
-            System.out.println("You're aiming to be underweight.");
-            System.out.println("Is this what you really want?");
-            this.weightGoal = weight;
-        } else if (calculateBMI(weight) > 18.5 && calculateBMI(weight) <= 24.99) {
-            System.out.println("Successfully updated your new weight goal!");
-            this.weightGoal = weight;
-        } else {
-            System.out.println("You're aiming to be obese.");
-            System.out.println("Is this what you really want?");
-            this.weightGoal = weight;
-        }
+        this.weightGoal = weight;
+    }
+
+    public void setAchievingWeightGoal(boolean bool) {
+        isAchievingWeightGoal = bool;
     }
 }
 

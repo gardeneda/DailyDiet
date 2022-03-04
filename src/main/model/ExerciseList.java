@@ -20,6 +20,7 @@ public class ExerciseList {
         return workout.get(i);
     }
 
+    // ================================================================
     // EFFECTS: returns true if workout list is empty, otherwise false
     public boolean isEmpty() {
         return workout.size() == 0;
@@ -38,7 +39,6 @@ public class ExerciseList {
         int lastIndex = workout.size() - 1;
         workout.remove(lastIndex);
     }
-
 
     // EFFECTS: takes the calories burnt from each exercise in the workout list
     //          and returns the total amount of calories that the user has burnt in the day.
