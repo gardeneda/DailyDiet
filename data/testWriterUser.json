@@ -1,0 +1,12 @@
+{
+    "gender": "M",
+    "heightInMeters": 1.73,
+    "heightInCm": 173,
+    "weightGoal": 67,
+    "name": "Jack Test",
+    "weight": 70,
+    "bodyMassIndex": 23.38868655818771,
+    "isAchievingWeightGoal": true,
+    "age": 25,
+    "dailyMetabolism": 1714
+}

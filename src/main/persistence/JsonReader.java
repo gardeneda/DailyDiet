@@ -17,12 +17,10 @@ import java.util.stream.Stream;
 // stored at its local data file.
 public class JsonReader {
     private String source;
-    private String sourceUser;
 
     // EFFECTS: constructs a reader that reads from the local data file.
-    public JsonReader(String source, String sourceUser) throws IOException {
+    public JsonReader(String source) {
         this.source = source;
-        this.sourceUser = sourceUser;
     }
 
 
@@ -50,15 +48,15 @@ public class JsonReader {
     }
 
     // EFFECTS: reads User data from file and returns it
-    private User userRead() throws IOException {
-        String jsonData = stringifyUser(sourceUser);
+    public User userRead() throws IOException {
+        String jsonData = stringifyUser(source);
         JSONObject jsonObject = new JSONObject(jsonData);
 
         return parseUser(jsonObject);
     }
 
     // EFFECTS: reads FoodList data from file and returns it
-    private Day dayRead() throws IOException {
+    public Day dayRead() throws IOException {
         String jsonData = stringifyDay(source);
         JSONObject jsonObject = new JSONObject(jsonData);
 

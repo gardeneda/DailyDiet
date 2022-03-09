@@ -22,11 +22,28 @@ public class Day implements Writable {
         this.foodList = foodList;
     }
 
+
+    // GETTERS
+
     public int getDate() {
         return date;
     }
 
+    public int getNumExerList() {
+        return exerciseList.getList().size();
+    }
 
+    public int getNumFoodList() {
+        return foodList.getList().size();
+    }
+
+    public ExerciseList getExerciseList() {
+        return exerciseList;
+    }
+
+    public FoodList getFoodList() {
+        return foodList;
+    }
 
     @Override
     public JSONObject toJson() {

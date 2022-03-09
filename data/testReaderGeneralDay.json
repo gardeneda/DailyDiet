@@ -1,0 +1,25 @@
+{
+  "date": 1,
+  "exerciseList": [
+    {
+      "name": "running",
+      "hours": 1,
+      "minutes": 0
+    },
+    {
+      "name": "swimming",
+      "hours": 2,
+      "minutes": 12
+    }
+  ],
+  "foodList": [
+    {
+      "name": "Pasta",
+      "calories": 350
+    },
+    {
+      "name": "Hamburger",
+      "calories": 550
+    }
+  ]
+}

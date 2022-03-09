@@ -56,6 +56,14 @@ public class Exercise implements Writable {
         return this.name;
     }
 
+    public int getHours() {
+        return hours;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
     // EFFECTS: returns the total amount of calories burnt by performing the exercise.
     public double totalCaloriesBurnt() {
         int totalTimeInMinutes = (this.hours * 60) + this.minutes;
