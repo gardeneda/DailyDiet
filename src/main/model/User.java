@@ -1,11 +1,14 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.Objects;
 
 // Represents a user of the application.
 // Contains their basic info required to calculate metabolism and body mass index.
 
-public class User {
+public class User implements Writable {
     private String name;
     private int age;
     private String gender;
@@ -105,5 +108,19 @@ public class User {
     public void setAchievingWeightGoal(boolean bool) {
         isAchievingWeightGoal = bool;
     }
-}
 
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("age", age);
+        json.put("gender", gender);
+        json.put("weight", weight);
+        json.put("heightInCm", heightInCm);
+        json.put("heightInMeters", heightInMeters);
+        json.put("dailyMetabolism", dailyMetabolism);
+        json.put("bodyMassIndex", bodyMassIndex);
+        json.put("weightGoal", weightGoal);
+        json.put("isAchievingWeightGoal", isAchievingWeightGoal);
+        return json;
+    }
+}

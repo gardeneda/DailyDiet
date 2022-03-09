@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.Objects;
 
 // Represents the exercise that the user does.
@@ -7,7 +10,7 @@ import java.util.Objects;
 // Currently, only implemented basic exercises, but the code supports the
 // inclusion of more exercises.
 
-public class Exercise {
+public class Exercise implements Writable {
     private int hours;
     private int minutes;
     private double caloriesBurnPerMinute;
@@ -57,5 +60,15 @@ public class Exercise {
     public double totalCaloriesBurnt() {
         int totalTimeInMinutes = (this.hours * 60) + this.minutes;
         return this.caloriesBurnPerMinute * totalTimeInMinutes;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("hours", hours);
+        json.put("minutes", minutes);
+
+        return json;
     }
 }

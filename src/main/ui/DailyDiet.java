@@ -14,6 +14,7 @@ public class DailyDiet {
     private ExerciseList workout;
     private Scanner sc;
     private User user;
+    private Day day;
 
     // EFFECTS: runs the DailyDiet application
     public DailyDiet() {
@@ -64,6 +65,8 @@ public class DailyDiet {
         System.out.println("\tnewgoal -> Update Weight Goal");
         System.out.println("\tsummary -> Display total calories consumed and burnt, "
                 + "food(s) eaten, and Exercise(s) done");
+        System.out.println("\tsaveday -> Save the entire progress");
+        System.out.println("\tselectday -> Select the date of your ");
         System.out.println("\tq -> quit");
     }
 

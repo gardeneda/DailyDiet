@@ -1,4 +1,4 @@
 package exceptions;
 
-public class InvalidHoursException extends InvalidTimeException {
+public class InvalidHoursException extends Exception {
 }

@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +17,6 @@ public class FoodList {
     // GETTER METHODS
     public List<Food> getList() {
         return diet;
-    }
-
-    public Food getIndex(int i) {
-        return diet.get(i);
     }
 
     // ================================================================
