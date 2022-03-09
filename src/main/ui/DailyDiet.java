@@ -29,6 +29,7 @@ public class DailyDiet {
         boolean keepGoing = true;
         String command;
 
+
         try {
             initUtils();
             user = attainUserInfo();
