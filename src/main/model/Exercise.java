@@ -22,24 +22,25 @@ public class Exercise implements Writable {
         this.name = exerciseName;
         this.hours = hours;
         this.minutes = minutes;
-        if (Objects.equals(exerciseName, "running")) {
-            this.caloriesBurnPerHour = 606.0;
-            this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
-        } else if (Objects.equals(exerciseName, "swimming")) {
-            this.caloriesBurnPerHour = 720.0;
-            this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
-        } else if (Objects.equals(exerciseName, "bicycling")) {
-            this.caloriesBurnPerHour = 720.0;
-            this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
-        } else if (Objects.equals(exerciseName, "weightlifting")) {
-            this.caloriesBurnPerHour = 432.0;
-            this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
-        } else if (Objects.equals(exerciseName, "calisthenics")) {
-            this.caloriesBurnPerHour = 324.0;
-            this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
-        } else if (Objects.equals(exerciseName, "hiking")) {
-            this.caloriesBurnPerHour = 432.0;
-            this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
+        switch (exerciseName) {
+            case "running":
+                this.caloriesBurnPerHour = 606.0;
+                this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
+                break;
+            case "swimming":
+            case "bicycling":
+                this.caloriesBurnPerHour = 720.0;
+                this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
+                break;
+            case "weightlifting":
+            case "hiking":
+                this.caloriesBurnPerHour = 432.0;
+                this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
+                break;
+            case "calisthenics":
+                this.caloriesBurnPerHour = 324.0;
+                this.caloriesBurnPerMinute = this.caloriesBurnPerHour / 60;
+                break;
         }
     }
 
