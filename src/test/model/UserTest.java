@@ -11,7 +11,7 @@ public class UserTest {
     private User adultWoman;
     private User elderlyMan;
     private User elderlyWoman;
-
+    private User genderless;
 
     @BeforeEach
     public void setUp() {
@@ -21,6 +21,7 @@ public class UserTest {
         adultWoman = new User("Lisa", 28, "F", 53.5, 164.5);
         elderlyMan = new User("Jacob", 63, "M", 71.0, 177.3);
         elderlyWoman = new User("Irene", 67, "F", 63.4, 168.2);
+        genderless = new User("Alien", 1000, "X", 65, 200);
     }
 
     @Test
@@ -87,6 +88,7 @@ public class UserTest {
                 (5.677 * adultMale.getAge())), adultMale.calculateMetabolism());
         assertEquals((int)(447.593 + (9.247 * adultWoman.getWeight()) + (3.089 * adultWoman.getHeightInCm()) -
                 (4.330 * adultWoman.getAge())), adultWoman.calculateMetabolism());
+        assertEquals(0, genderless.calculateMetabolism());
     }
 
     @Test
@@ -119,6 +121,12 @@ public class UserTest {
 
         youngBoy.setGender("F");
         assertEquals("F", youngBoy.getGender());
+
+        youngGirl.setGender("M");
+        assertEquals("M", youngGirl.getGender());
+
+        adultMale.setGender("SX");
+        assertEquals("M", adultMale.getGender());
 
         youngBoy.setHeightInCm(177);
         assertEquals(177, youngBoy.getHeightInCm());

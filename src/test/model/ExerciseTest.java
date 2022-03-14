@@ -50,5 +50,6 @@ public class ExerciseTest {
         assertEquals(bicycling.getCaloriesBurnPerHour(), bicycling.totalCaloriesBurnt());
         assertEquals(weightlifting.getCaloriesBurnPerMinute(), weightlifting.totalCaloriesBurnt());
         assertEquals(0, calisthenics.totalCaloriesBurnt());
+        assertEquals(hiking.getCaloriesBurnPerMinute() * 59, hiking.totalCaloriesBurnt());
     }
 }
