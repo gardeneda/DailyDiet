@@ -22,10 +22,6 @@ public class ExerciseList {
         return workout;
     }
 
-    public Exercise getIndex(int i) {
-        return workout.get(i);
-    }
-
     // ================================================================
     // EFFECTS: returns true if workout list is empty, otherwise false
     public boolean isEmpty() {

@@ -105,4 +105,25 @@ public class UserTest {
         assertTrue(youngBoy.isAchievingWeightGoal());
         assertFalse(youngGirl.isAchievingWeightGoal());
     }
+
+    @Test
+    void testSetUserVariables() {
+        youngBoy.setName("Ronald");
+        assertEquals("Ronald", youngBoy.getName());
+
+        youngBoy.setAge(26);
+        assertEquals(26, youngBoy.getAge());
+
+        youngBoy.setWeight(77);
+        assertEquals(77, youngBoy.getWeight());
+
+        youngBoy.setGender("F");
+        assertEquals("F", youngBoy.getGender());
+
+        youngBoy.setHeightInCm(177);
+        assertEquals(177, youngBoy.getHeightInCm());
+
+        youngBoy.setWeightGoal(70);
+        assertEquals(70, youngBoy.getWeightGoal());
+    }
 }

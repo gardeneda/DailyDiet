@@ -115,10 +115,10 @@ public class User implements Writable {
     //          current age and gender.
     public double calculateMetabolism() {
         double metabolism;
-        if (Objects.equals(this.gender, "F")) {
+        if (gender.equals("F")) {
             metabolism = 447.593 + (9.247 * this.weight) + (3.089 * this.heightInCm) - (4.330 * this.age);
             this.dailyMetabolism = (int)metabolism;
-        } else  if (Objects.equals(this.gender, "M")) {
+        } else  if (gender.equals("M")) {
             metabolism = 88.362 + (13.397 * this.weight) + (4.799 * this.heightInCm) - (5.677 * this.age);
             this.dailyMetabolism = (int)metabolism;
         }
