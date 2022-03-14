@@ -38,7 +38,7 @@ public class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderDayEmptyLists.json");
         try {
             Day day = reader.dayRead();
-            int date = day.getDate();
+            String date = day.getDate();
             ExerciseList exerList = day.getExerciseList();
             FoodList foodList = day.getFoodList();
             checkDay(day, date, exerList, foodList);
@@ -56,7 +56,7 @@ public class JsonReaderTest extends JsonTest {
             List<Exercise> exerList = day.getExerciseList().getList();
             List<Food> foodList = day.getFoodList().getList();
 
-            assertEquals(1, day.getDate());
+            assertEquals("1", day.getDate());
             assertEquals(2, exerList.size());
             assertEquals(2, foodList.size());
 

@@ -72,6 +72,33 @@ public class User implements Writable {
         return this.isAchievingWeightGoal;
     }
 
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGender(String gender) {
+        if (gender.equals("M") || gender.equals("F")) {
+            this.gender = gender;
+        }
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setHeightInCm(double height) {
+        this.heightInCm = height;
+    }
+
+    public void setWeightGoal(double weight) {
+        this.weightGoal = weight;
+    }
+
     // MODIFIES: this
     // EFFECTS: calculates the body mass index of the User based on their
     //          current height and weight.

@@ -31,11 +31,13 @@ for desktop-application purposes, instead of being built for mobile. This is bei
 the users would have access to a computer at any given point in time, and also allow them to be more motivated
 and sincere of using the application.
 
-The application will also save the data that the user has inputted, recording their basic metabolism and BMI,
-and also allow them to track what they have eaten, what exercises they have performed on what days.
-
-The user can therefore look back at previous days to see how they are doing (generically) in reaching their
-stated weight goal by accessing it through the menu, even if they have closed the application before. 
+The application will also save the data that the user has inputted, regarding their basic information, such as
+name, age, weight, height and etc. Once the user has saved this data before exiting the program, this data 
+will be loaded automatically every time the application launches. Furthermore, the user can also save the progress
+of their diet and workouts in the day, allowing them to re-launch the application and add whatever they ate or
+whatever exercise they performed periodically. They can then load this data back into the application, 
+and get a calculation for their overall day once they know that they have finished eating and 
+exercising throughout the day. 
 
 As of right now, my lack of proficiency in JAVA is holding me back from creating a perfect representation of what
 I **want** to build. Currently, the application is run by console-inputs, which will later be replaced by a GUI.

@@ -30,7 +30,7 @@ public class JsonWriterTest extends JsonTest {
         try {
             ExerciseList emptyExer = new ExerciseList();
             FoodList emptyFood = new FoodList();
-            Day day = new Day(1, emptyExer, emptyFood);
+            Day day = new Day("1", emptyExer, emptyFood);
             JsonWriter writer = new JsonWriter("./data/testWriterDayEmptyLists");
             writer.open();
             writer.write(day);
@@ -38,7 +38,7 @@ public class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterDayEmptyLists");
             day = reader.dayRead();
-            assertEquals(1, day.getDate());
+            assertEquals("1", day.getDate());
             assertEquals(0, day.getNumFoodList());
             assertEquals(0, day.getNumFoodList());
         } catch (IOException e) {
@@ -59,7 +59,7 @@ public class JsonWriterTest extends JsonTest {
             FoodList foodList = new FoodList();
             foodList.addFood(pasta);
             foodList.addFood(hamburger);
-            Day day = new Day(1, exerciseList, foodList);
+            Day day = new Day("1", exerciseList, foodList);
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralDay.json");
             writer.open();
             writer.write(day);
@@ -69,7 +69,7 @@ public class JsonWriterTest extends JsonTest {
             day = reader.dayRead();
             List<Exercise> exerListReader = day.getExerciseList().getList();
             List<Food> foodListReader = day.getFoodList().getList();
-            assertEquals(1, day.getDate());
+            assertEquals("1", day.getDate());
             assertEquals(2, exerListReader.size());
             assertEquals(2, foodListReader.size());
             checkExercise(exerListReader.get(0), "running", 1, 0);

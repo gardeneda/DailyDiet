@@ -1,0 +1,14 @@
+{
+    "date": "2022-03-14",
+    "exerciseList": [],
+    "foodList": [
+        {
+            "name": "Pasta",
+            "calories": 350
+        },
+        {
+            "name": "Hamburger",
+            "calories": 550
+        }
+    ]
+}

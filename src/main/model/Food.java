@@ -29,4 +29,5 @@ public class Food implements Writable {
         json.put("calories", calories);
         return json;
     }
+
 }

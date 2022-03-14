@@ -23,7 +23,6 @@ public class JsonReader {
         this.source = source;
     }
 
-
     // EFFECTS: Reads User string data file as a string and returns it
     //          Throws an IOException if error occurs reading data from file
     private String stringifyUser(String sourceUser) throws IOException {
@@ -75,7 +74,7 @@ public class JsonReader {
     }
 
     private Day parseDay(JSONObject jsonObject) {
-        int date = jsonObject.getInt("date");
+        String date = jsonObject.getString("date");
         JSONArray exerciseJson = jsonObject.getJSONArray("exerciseList");
         ExerciseList exerciseList = convertToExerciseList(exerciseJson);
 

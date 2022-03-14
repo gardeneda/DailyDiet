@@ -19,7 +19,7 @@ public class JsonTest {
         assertEquals(isAchievingWeightGoal, user.isAchievingWeightGoal());
     }
 
-    protected void checkDay(Day day, int date, ExerciseList exerciseList, FoodList foodList) {
+    protected void checkDay(Day day, String date, ExerciseList exerciseList, FoodList foodList) {
         assertEquals(date, day.getDate());
         assertEquals(exerciseList.getList().size(), day.getNumExerList());
         assertEquals(foodList.getList().size(), day.getNumFoodList());

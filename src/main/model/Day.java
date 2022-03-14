@@ -10,13 +10,13 @@ import persistence.Writable;
 // Holds onto information about what they ate that day and what exercises they performed on that day.
 public class Day implements Writable {
 
-    private int date;
+    private String date;
     private ExerciseList exerciseList;
     private FoodList foodList;
 
     // EFFECTS: constructs a day with the date the day was made, the list of exercise done that day
     //          and the list of food eaten during that day.
-    public Day(int date, ExerciseList exerciseList, FoodList foodList) {
+    public Day(String date, ExerciseList exerciseList, FoodList foodList) {
         this.date = date;
         this.exerciseList = exerciseList;
         this.foodList = foodList;
@@ -25,7 +25,7 @@ public class Day implements Writable {
 
     // GETTERS
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
