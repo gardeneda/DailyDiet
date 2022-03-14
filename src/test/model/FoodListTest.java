@@ -58,6 +58,7 @@ public class FoodListTest {
         oneElement.removeLastFood();
         assertTrue(oneElement.isEmpty());
 
+        assertFalse(heavyDiet.isEmpty());
         heavyDiet.removeLastFood();
         heavyDiet.removeLastFood();
         heavyDiet.removeLastFood();

@@ -39,6 +39,7 @@ public class ExerciseListTest {
         oneWorkOut.removeLastExercise();
         assertTrue(oneWorkOut.isEmpty());
 
+        assertFalse(fourWorkOut.isEmpty());
         fourWorkOut.removeLastExercise();
         fourWorkOut.removeLastExercise();
         fourWorkOut.removeLastExercise();
