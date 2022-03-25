@@ -211,13 +211,14 @@ public class DailyDietGUI extends JFrame implements ActionListener {
     }
 
     // EFFECTS: asks user if their day is complete
+    // SOURCE: https://gist.github.com/zachomedia/4365663
     private boolean isDayFinished() {
-        JOptionPane optionPane = new JOptionPane(
-                "Is your day complete?",
-                JOptionPane.QUESTION_MESSAGE,
-                JOptionPane.YES_NO_OPTION);
+        int returnValue;
+        returnValue = JOptionPane.showConfirmDialog(null,
+                "Is your day complete? Press NO if you are coming back to add more.",
+                "Are you sure?", JOptionPane.YES_NO_OPTION);
 
-        return false;
+        return returnValue == JOptionPane.YES_OPTION;
     }
 
     // MODIFIES: this
@@ -226,6 +227,7 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         if (isDayFinished) {
             new PrintWriter(dayJsonStore).close();
         }
+        System.exit(0);
     }
 
     @Override
@@ -250,8 +252,7 @@ public class DailyDietGUI extends JFrame implements ActionListener {
                 load();
                 break;
             case "quit":
-
-                System.exit(0);
+                finalizeDay();
         }
     }
 }
