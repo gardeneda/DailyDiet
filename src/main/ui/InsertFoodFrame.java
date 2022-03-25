@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+// Represents the JFrame interface for collecting data of the foods that the
+// user has eaten throughout the day
 public class InsertFoodFrame extends JFrame implements ActionListener {
     private JTextField foodName;
     private JTextField foodCalorie;
@@ -35,6 +37,7 @@ public class InsertFoodFrame extends JFrame implements ActionListener {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    // EFFECTS: initializes the components that will be placed on this JFrame
     private void initializeComponents() {
         foodName = new JTextField("What food did you eat?");
         foodCalorie = new JTextField("Calorie of Food: ");
@@ -48,6 +51,7 @@ public class InsertFoodFrame extends JFrame implements ActionListener {
         addFood.addActionListener(this);
     }
 
+    // EFFECTS: sets up a JTable for the foods listed inside the FoodList
     private void foodTableSetup() {
         Vector<Vector> rowData = new Vector<Vector>();
         Vector<String> columnNames = new Vector<String>();
@@ -64,6 +68,8 @@ public class InsertFoodFrame extends JFrame implements ActionListener {
         allFoods = new JTable(rowData, columnNames);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds Java Swing components to the container
     private void addComponents() {
         JScrollPane scrollPane = new JScrollPane(allFoods);
         add(scrollPane, BorderLayout.CENTER);
@@ -74,6 +80,8 @@ public class InsertFoodFrame extends JFrame implements ActionListener {
         add(removeFood);
     }
 
+    // MODIFIES: diet
+    // EFFECTS: adds or removes Food object from the diet FoodList
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("add")) {

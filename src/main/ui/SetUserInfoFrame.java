@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Represents the JFrame interface for creating a new user when they first start
+// the application with no saved user data.
 public class SetUserInfoFrame extends JFrame implements ActionListener {
     private final JTextField nameField = new JTextField("What is your name?");
     private final JTextField ageField = new JTextField("How old are you?");
@@ -38,6 +40,8 @@ public class SetUserInfoFrame extends JFrame implements ActionListener {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    // MODIFIES: user
+    // EFFECTS: creates a new user based on the information that the user gives
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("setUser")) {

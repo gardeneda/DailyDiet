@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Vector;
 
+// Represents the JFrame interface for adding and removing exercises from the day's list.
 public class InsertExerciseFrame extends JFrame implements ActionListener {
     private JComboBox<String> exerciseName;
     private JTextField exerciseHour;
@@ -39,6 +40,7 @@ public class InsertExerciseFrame extends JFrame implements ActionListener {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    // EFFECTS: initializes the components that will be placed on this JFrame
     private void initializeComponents() {
         exerciseName = new JComboBox<>();
         exerciseName.addItem("Running");
@@ -60,6 +62,7 @@ public class InsertExerciseFrame extends JFrame implements ActionListener {
         addExercise.addActionListener(this);
     }
 
+    // EFFECTS: sets up a JTable for the exercises listed inside the ExerciseList
     private void exerciseTableSetup() {
         Vector<Vector> rowData = new Vector<Vector>();
         Vector<String> columnNames = new Vector<String>();
@@ -76,6 +79,8 @@ public class InsertExerciseFrame extends JFrame implements ActionListener {
         allExercises = new JTable(rowData, columnNames);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds Java Swing components to the container
     private void addComponents() {
         JScrollPane scrollPane = new JScrollPane(allExercises);
         add(scrollPane, BorderLayout.CENTER);
@@ -87,6 +92,8 @@ public class InsertExerciseFrame extends JFrame implements ActionListener {
         add(removeExercise);
     }
 
+    // MODIFIES: workout
+    // EFFECTS: adds or removes Exercise object from the workout ExerciseList
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("add")) {

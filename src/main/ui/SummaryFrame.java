@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+//  Represents a JFrame that shows the user a summary of the exercises and foods
+//  they have done during the day and a summary of their calories.
 public class SummaryFrame extends JFrame {
     private JLabel sumCalories;
     private JLabel losingOrGainingWeight;
@@ -41,6 +43,7 @@ public class SummaryFrame extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    // EFFECTS: initializes the components that go on this JFrame interface
     private void initializeComponents() {
         double caloriesConsumed = diet.totalCaloriesConsumed();
         double caloriesBurnt = workout.totalCaloriesBurnt();
@@ -78,6 +81,8 @@ public class SummaryFrame extends JFrame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds Java Swing components to the container
     private void addComponents() {
         JScrollPane scrollPaneExercises = new JScrollPane(allExercises);
         add(scrollPaneExercises, BorderLayout.CENTER);
@@ -89,6 +94,7 @@ public class SummaryFrame extends JFrame {
         add(losingOrGainingWeight);
     }
 
+    // EFFECTS: sets up a JTable for the exercises listed inside the ExerciseList
     private void exerciseTableSetup() {
         Vector<Vector> rowData = new Vector<Vector>();
         Vector<String> columnNames = new Vector<String>();
@@ -105,6 +111,7 @@ public class SummaryFrame extends JFrame {
         allExercises = new JTable(rowData, columnNames);
     }
 
+    // EFFECTS: sets up a JTable for the foods listed inside the FoodList
     private void foodTableSetup() {
         Vector<Vector> rowData = new Vector<Vector>();
         Vector<String> columnNames = new Vector<String>();

@@ -7,6 +7,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Represents the JFrame interface for the user to view their user information
+// and also to change their user info
 public class ViewUserInfoFrame extends JFrame implements ActionListener {
     private JLabel name;
     private JLabel age;
@@ -19,6 +21,7 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
 
     private static final JButton change = new JButton("Change User Info");
 
+    // EFFECTS: constructor for the class
     public ViewUserInfoFrame(User user) {
         super("User Info");
 
@@ -36,6 +39,7 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    // EFFECTS: initializes the components that will go on the interface.
     private void initializeComponents() {
         name = new JLabel(user.getName());
         age = new JLabel(String.valueOf(user.getAge()));
@@ -49,6 +53,8 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
         dailyMetabolism = new JLabel("Daily Metabolism: " + user.getDailyMetabolism() + " Cal");
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds Java Swing components to the container
     private void addComponents() {
         add(name);
         add(age);
@@ -60,6 +66,7 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
         add(change);
     }
 
+    // Represents a JFrame that allow the user to change their info
     private class ChangeUserInfo extends JFrame implements ActionListener {
         private final JTextField ageField = new JTextField("Re-Enter Age");
         private final JTextField weightField = new JTextField("Re-Enter Weight");
@@ -101,6 +108,8 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         }
 
+        // MODIFIES: user
+        // EFFECTS: changes the user information based on the given user data
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("change")) {
@@ -123,6 +132,9 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: user
+    // EFFECTS: initializes a JFrame interface that allow the user to change their
+    //          registered information
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("change")) {

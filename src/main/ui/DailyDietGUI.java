@@ -1,6 +1,5 @@
 package ui;
 
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import model.*;
 import org.json.JSONException;
 import persistence.JsonReader;
@@ -8,7 +7,6 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -16,10 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
+// Represents the DailyDiet application on a SWING GUI.
 // SOURCE: https://stackoverflow.com/questions/6578205/swing-jlabel-text-change-on-the-running-application
 public class DailyDietGUI extends JFrame implements ActionListener {
     private static final String userJsonStore = "./data/user.json";
@@ -27,23 +23,21 @@ public class DailyDietGUI extends JFrame implements ActionListener {
 
     private FoodList diet;
     private ExerciseList workout;
-    private Scanner sc;
     private User user;
     private Day day;
     private JsonReader reader;
     private JsonWriter writer;
     private String date;
-    private List<Day> dayList;
 
     JButton userInfo = new JButton("View User Info");
     JButton insertFood = new JButton("Add or Remove Food");
     JButton insertExercise = new JButton("Add or Remove Exercise");
-    JButton setWeightGoal = new JButton("Set a New Weight Goal");
     JButton summary = new JButton("Summary of Total Calorie Consumption / Burnt");
     JButton save = new JButton("Save");
     JButton load = new JButton("Load");
     JButton quit = new JButton("Quit");
 
+    // EFFECTS: runs the DailyDiet application on a SWING GUI.
     public DailyDietGUI() {
         super("DailyDiet");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +46,6 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         add(userInfo);
         add(insertFood);
         add(insertExercise);
-        add(setWeightGoal);
         add(summary);
         add(save);
         add(load);
@@ -67,6 +60,7 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         initProgram();
     }
 
+    // EFFECTS: initializes all the necessary code required to initially run the program
     private void initProgram() {
         initUtils();
         initUser();
@@ -79,11 +73,12 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         workout = new ExerciseList();
         LocalDate nowDate = LocalDate.now();
         date = nowDate.format(DateTimeFormatter.ISO_DATE);
-        dayList = new ArrayList<>();
 
         initButtons();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes all the buttons and sets them up for the ActionListener
     private void initButtons() {
         userInfo.setActionCommand("userInfo");
         userInfo.addActionListener(this);
@@ -93,9 +88,6 @@ public class DailyDietGUI extends JFrame implements ActionListener {
 
         insertFood.setActionCommand("insertFood");
         insertFood.addActionListener(this);
-
-        setWeightGoal.setActionCommand("setWeightGoal");
-        setWeightGoal.addActionListener(this);
 
         summary.setActionCommand("summary");
         summary.addActionListener(this);
@@ -122,6 +114,8 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: retrieves user information saved in local data file
     private void loadUser() {
         try {
             reader = new JsonReader(userJsonStore);
@@ -130,13 +124,6 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    // MODIFIES: user
-    // EFFECTS: updates user's BMI and daily metabolism
-    private void updateUserBodyMassIndexAndMetabolism(User user) {
-        double userMetabolism = user.calculateMetabolism();
-        double userBMI = user.calculateBMI(user.getWeight());
     }
 
     // EFFECTS: saves all data necessary to run the program,
@@ -230,6 +217,8 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         System.exit(0);
     }
 
+    // MODIFIES: this
+    // EFFECTS: runs set of code tied to the individual buttons on the main interface.
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
