@@ -1,18 +1,25 @@
 {
     "date": "2022-03-25",
-    "exerciseList": [],
+    "exerciseList": [
+        {
+            "hours": 1,
+            "minutes": 15,
+            "name": "running"
+        },
+        {
+            "hours": 2,
+            "minutes": 30,
+            "name": "weightlifting"
+        }
+    ],
     "foodList": [
         {
             "name": "Pasta",
             "calories": 350
         },
         {
-            "name": "Hamubrger",
+            "name": "Hamburger",
             "calories": 550
-        },
-        {
-            "name": "Ramen",
-            "calories": 660
         }
     ]
 }

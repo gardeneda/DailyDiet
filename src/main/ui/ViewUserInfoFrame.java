@@ -115,18 +115,19 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
                 user.setWeightGoal(weightGoal);
 
                 dispose();
+                new ViewUserInfoFrame(user);
             } else if (e.getActionCommand().equals("quit")) {
                 dispose();
+                new ViewUserInfoFrame(user);
             }
         }
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("change")) {
             new ChangeUserInfo(user);
+            dispose();
         }
     }
 }

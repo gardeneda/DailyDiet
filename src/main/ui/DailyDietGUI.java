@@ -1,5 +1,6 @@
 package ui;
 
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import model.*;
 import org.json.JSONException;
 import persistence.JsonReader;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -177,6 +179,7 @@ public class DailyDietGUI extends JFrame implements ActionListener {
     private void load() {
         try {
             loadDay();
+            JOptionPane.showMessageDialog(this, "Data Successfully Loaded!");
         } catch (JSONException e) {
             System.out.println("There is no saved data to load!");
         }
@@ -197,6 +200,34 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: wipes the stored JSON file for the day if the user states that their day is finished
+    private void finalizeDay() {
+        try {
+            wipeDay(isDayFinished());
+        } catch (FileNotFoundException e) {
+            System.out.println("The data path is not found!");
+        }
+    }
+
+    // EFFECTS: asks user if their day is complete
+    private boolean isDayFinished() {
+        JOptionPane optionPane = new JOptionPane(
+                "Is your day complete?",
+                JOptionPane.QUESTION_MESSAGE,
+                JOptionPane.YES_NO_OPTION);
+
+        return false;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: wipes the stored JSON file for day; dayJsonStore if given boolean is true
+    private void wipeDay(boolean isDayFinished) throws FileNotFoundException {
+        if (isDayFinished) {
+            new PrintWriter(dayJsonStore).close();
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -207,14 +238,19 @@ public class DailyDietGUI extends JFrame implements ActionListener {
                 new InsertFoodFrame(diet);
                 break;
             case "insertExercise":
+                new InsertExerciseFrame(workout);
                 break;
             case "save":
                 save();
+                break;
+            case "summary":
+                new SummaryFrame(workout, diet, user);
                 break;
             case "load":
                 load();
                 break;
             case "quit":
+
                 System.exit(0);
         }
     }
