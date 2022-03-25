@@ -1,13 +1,10 @@
 package ui;
 
-import exceptions.NullGoalException;
 import model.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
 //  Represents a JFrame that shows the user a summary of the exercises and foods
@@ -66,7 +63,8 @@ public class SummaryFrame extends JFrame {
                         + user.getWeightGoal() + "kg!");
                 user.setAchievingWeightGoal(true);
             } else {
-                losingOrGainingWeight = new JLabel("You're losing weight right now, " + "as you are consuming too much calories.");
+                losingOrGainingWeight = new JLabel("You're losing weight right now, "
+                        + "as you are consuming too much calories.");
                 user.setAchievingWeightGoal(false);
             }
         } else {
