@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
 public class SetUserInfoFrame extends JFrame implements ActionListener {
     private final JTextField nameField = new JTextField("What is your name?");
     private final JTextField ageField = new JTextField("How old are you?");
-    private final JTextField genderField = new JTextField("What is your biological gender? Answer with 'F' for female, 'M' for male");
+    private final JTextField genderField =
+            new JTextField("What is your biological gender? Answer with 'F' for female, 'M' for male");
     private final JTextField weightField = new JTextField("How much do you weigh in kg?");
     private final JTextField heightField = new JTextField("How tall are you in cm?");
     private final JButton confirm = new JButton("Confirm All Data");
