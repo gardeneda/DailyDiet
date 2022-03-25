@@ -24,11 +24,9 @@ public class ViewUserInfoFrame extends JFrame implements ActionListener {
 
         this.user = user;
         initializeComponents();
-
+        addComponents();
         change.setActionCommand("change");
         change.addActionListener(this);
-
-        addComponents();
 
         setSize(400, 400);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));

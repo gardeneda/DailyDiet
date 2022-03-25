@@ -1,5 +1,18 @@
 {
     "date": "2022-03-25",
     "exerciseList": [],
-    "foodList": []
+    "foodList": [
+        {
+            "name": "Pasta",
+            "calories": 350
+        },
+        {
+            "name": "Hamubrger",
+            "calories": 550
+        },
+        {
+            "name": "Ramen",
+            "calories": 660
+        }
+    ]
 }
