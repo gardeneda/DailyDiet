@@ -1,0 +1,12 @@
+{
+    "gender": "M",
+    "heightInMeters": 1.7,
+    "heightInCm": 170,
+    "weightGoal": 0,
+    "name": "Isaiah",
+    "weight": 65,
+    "bodyMassIndex": 22.49134948096886,
+    "isAchievingWeightGoal": false,
+    "age": 24,
+    "dailyMetabolism": 1638
+}

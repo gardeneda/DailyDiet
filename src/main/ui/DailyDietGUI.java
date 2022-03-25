@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -39,13 +40,13 @@ public class DailyDietGUI extends JFrame implements ActionListener {
     JButton summary = new JButton("Summary of Total Calorie Consumption / Burnt");
     JButton save = new JButton("Save");
     JButton load = new JButton("Load");
-    JButton quit = new JButton("quit");
+    JButton quit = new JButton("Quit");
 
     public DailyDietGUI() {
         super("DailyDiet");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(400, 400);
-        ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13) );
+        ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         add(userInfo);
         add(insertFood);
         add(insertExercise);
@@ -136,6 +137,65 @@ public class DailyDietGUI extends JFrame implements ActionListener {
         double userBMI = user.calculateBMI(user.getWeight());
     }
 
+    // EFFECTS: saves all data necessary to run the program,
+    //          (user data, and day data)
+    private void save() {
+        saveDay();
+        saveUser();
+        JOptionPane.showMessageDialog(this, "Data Successfully Saved!");
+    }
+
+    // EFFECTS : saves the exercise done and food eaten as a day
+    private void saveDay() {
+        try {
+            writer = new JsonWriter(dayJsonStore);
+            writer.open();
+            day = new Day(date, workout, diet);
+            writer.write(day);
+            writer.close();
+            System.out.println("Data saved!");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file.");
+        }
+    }
+
+    // EFFECTS: saves the user data to a local file
+    private void saveUser() {
+        try {
+            writer = new JsonWriter(userJsonStore);
+            writer.open();
+            writer.write(user);
+            writer.close();
+            System.out.println("User data saved!");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file.");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: retrieves user data and the list of days saved.
+    private void load() {
+        try {
+            loadDay();
+        } catch (JSONException e) {
+            System.out.println("There is no saved data to load!");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: retrieves days saved in local data file
+    private void loadDay() {
+        try {
+            reader = new JsonReader(dayJsonStore);
+            day = reader.dayRead();
+            workout = day.getExerciseList();
+            diet = day.getFoodList();
+        } catch (IOException e) {
+            System.out.println("Unable to read from file");
+        } catch (NullPointerException e) {
+            System.out.println("You did not enter any information for the day!");
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -143,8 +203,19 @@ public class DailyDietGUI extends JFrame implements ActionListener {
             case "userInfo":
                 new ViewUserInfoFrame(user);
                 break;
+            case "insertFood":
+                new InsertFoodFrame(diet);
+                break;
             case "insertExercise":
                 break;
+            case "save":
+                save();
+                break;
+            case "load":
+                load();
+                break;
+            case "quit":
+                System.exit(0);
         }
     }
 }

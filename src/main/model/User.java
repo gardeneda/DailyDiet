@@ -26,7 +26,9 @@ public class User implements Writable {
         this.gender = gender;
         this.weight = weight;
         this.heightInCm = height;
-        this.heightInMeters = (height / 100);
+        this.heightInMeters = (heightInCm / 100);
+        calculateBMI(this.weight);
+        calculateMetabolism();
         this.isAchievingWeightGoal = false;
     }
 
@@ -105,7 +107,7 @@ public class User implements Writable {
     //          The parameter is used with given weight instead of the user's (this.weight),
     //          as the user may want to calculate their weight goal.
     public double calculateBMI(double weight) {
-        this.bodyMassIndex = (weight / (this.heightInMeters * this.heightInMeters));
+        this.bodyMassIndex = (weight / ((this.heightInCm / 100) * (this.heightInCm / 100)));
         return this.bodyMassIndex;
     }
 

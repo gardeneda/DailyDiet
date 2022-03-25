@@ -23,7 +23,6 @@ public class DailyDietApp {
     private static final String userJsonStore = "./data/user.json";
     private static final String dayJsonStore = "./data/day.json";
 
-
     private FoodList diet;
     private ExerciseList workout;
     private Scanner sc;
