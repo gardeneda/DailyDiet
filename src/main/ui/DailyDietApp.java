@@ -19,9 +19,11 @@ import java.time.LocalDate;
 // Represents the UI interface that the users will be using to interact with the DailyDiet application.
 // Made some references to the TellerApp to see how some things need to be implemented.
 
-public class DailyDiet {
-    private static final String userJsonStore = "./data/user";
-    private static final String dayJsonStore = "./data/day";
+public class DailyDietApp {
+    private static final String userJsonStore = "./data/user.json";
+    private static final String dayJsonStore = "./data/day.json";
+
+
     private FoodList diet;
     private ExerciseList workout;
     private Scanner sc;
@@ -33,7 +35,7 @@ public class DailyDiet {
     private List<Day> dayList;
 
     // EFFECTS: runs the DailyDiet application
-    public DailyDiet() {
+    public DailyDietApp() {
         runDailyDiet();
     }
 
