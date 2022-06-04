@@ -13,8 +13,8 @@ public class JsonTest {
         assertEquals(gender, user.getGender());
         assertEquals(weight, user.getWeight());
         assertEquals(height, user.getHeightInCm());
-        assertEquals(dailyMetabolism, user.getDailyMetabolism());
-        assertEquals(bodyMassIndex, user.getBodyMassIndex());
+        assertEquals(user.calculateMetabolism(), user.getDailyMetabolism());
+        assertEquals(user.calculateBMI(user.getWeight()), user.getBodyMassIndex());
         assertEquals(weightGoal, user.getWeightGoal());
         assertEquals(isAchievingWeightGoal, user.isAchievingWeightGoal());
     }
