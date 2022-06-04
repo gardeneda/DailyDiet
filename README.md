@@ -40,4 +40,4 @@ and get a calculation for their overall day once they know that they have finish
 exercising throughout the day. 
 
 As of right now, my lack of proficiency in JAVA is holding me back from creating a perfect representation of what
-I **want** to build. Currently, the application is run by console-inputs, which will later be replaced by a GUI.
+I **want** to build. Currently, the application is still lacking core features that should be implemented.
