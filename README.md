@@ -43,5 +43,7 @@ As of right now, my lack of proficiency in JAVA is holding me back from creating
 I **want** to build. Currently, the application is still lacking core features that should be implemented.
 
 Currently, a more refined GUI using React will be implemented,
-and the usage of APIs (or perhaps webscraping) to automatically gain info
+and the usage of APIs (or perhaps web-scraping) to automatically gain info
 of the calorie of food the user inputs. 
+
+Also, will integrate AWS when possible.
